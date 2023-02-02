@@ -1,0 +1,10 @@
+<ng-template #rt let-r="result" let-t="term">
+	<ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
+</ng-template>
+<label for="city-typeahead">Busca una ciudad:</label>
+<input id="city-typeahead" #cityTypeahead type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search"
+    [inputFormatter]="formatter" [resultTemplate]="rt" (focus)="focus$.next($any($event).target.value)"
+    (click)="click$.next($any($event).target.value)" #instance="ngbTypeahead"
+    (selectItem)="addToCityList($event, cityTypeahead)" />
+<hr />
+<pre>Model: {{ model | json }}</pre>

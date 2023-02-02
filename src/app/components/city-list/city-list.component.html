@@ -1,0 +1,3 @@
+<div *ngFor="let city of selectedCities; index as i">
+    <a routerLink="/city/{{city.name}}" [queryParams]="{id: city.id}">{{city.name}}</a><button (click)="deleteCity(i)">Borrar ciudad</button>
+</div>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { LoginService } from '../services/login.service';
+import { Router } from '@angular/router';
+import { LoginService } from '../../services/login.service';
 
 @Component({
     selector: 'app-login',
@@ -14,12 +15,12 @@ export class LoginComponent {
     };
     isLoginFailed = false;
 
-    constructor(private loginService: LoginService) { }
+    constructor(private loginService: LoginService, private router: Router) { }
 
     onSubmit(): void {
         if (this.loginService.login(this.form)) {
             this.isLoginFailed = false;
-            // navigate
+            this.router.navigate(['/main']);
         } else {
             this.isLoginFailed = true;
         }

@@ -2,7 +2,7 @@
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col col-xl-10">
-                <div class="card" style="border-radius: 1rem;">
+                <div class="card" style="border-radius: 1rem; --bs-card-border-color: #359ade">
                     <div class="row g-0">
                         <div class="col-md-6 col-lg-5 d-none d-md-block">
                             <img src="https://thumbs.dreamstime.com/b/landscape-white-gray-rain-clouds-bottom-photo-clear-blue-sky-above-bright-sunny-day-vertical-view-180244203.jpg"
@@ -19,7 +19,7 @@
                                     elTiempo
                                 </h5>
                                 <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-                                    <div class="form-group">
+                                    <div class="form-outline mb-2">
                                         <input type="text" class="form-control" name="username"
                                             placeholder="Nombre de usuario" [(ngModel)]="form.username" required
                                             #username="ngModel" />
@@ -28,7 +28,7 @@
                                             El usuario es obligatorio
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-outline mb-2">
                                         <input type="password" class="form-control" name="password"
                                             placeholder="Contraseña" [(ngModel)]="form.password" required
                                             #password="ngModel" />
