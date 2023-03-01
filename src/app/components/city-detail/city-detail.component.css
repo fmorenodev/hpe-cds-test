@@ -1,0 +1,18 @@
+.container-fluid {
+    padding-top: 20px;
+}
+
+.temp {
+    place-items: center;
+}
+
+.temp-details>p>span,
+.grey {
+    color: #57585a;
+    font-size: 1rem;
+}
+
+.icon-container {
+    background: #e5ecf0;
+    border-radius: 0.375rem;
+}

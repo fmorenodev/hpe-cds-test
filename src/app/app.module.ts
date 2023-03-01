@@ -11,7 +11,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { CityDetailComponent } from './components/city-detail/city-detail.component';
 import { CityListComponent } from './components/city-list/city-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ApiInterceptor } from './helpers/api.interceptor';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
     declarations: [
@@ -29,11 +29,7 @@ import { ApiInterceptor } from './helpers/api.interceptor';
         HttpClientModule,
         NgbModule
     ],
-    providers: [{
-        provide: HTTP_INTERCEPTORS,
-        useClass: ApiInterceptor,
-        multi: true,
-    }],
+    providers: [CookieService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

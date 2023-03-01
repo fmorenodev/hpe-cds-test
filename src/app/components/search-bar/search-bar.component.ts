@@ -13,7 +13,6 @@ export class SearchBarComponent {
     @Output() selectedCities = new EventEmitter<CityData>();
 
     CityData: CityData[] = cityDataJson;
-    model: any; // unused
 
     @ViewChild('instance', { static: true })
     instance!: NgbTypeahead;

@@ -1,3 +1,11 @@
-<div *ngFor="let city of selectedCities; index as i">
-    <a routerLink="/city/{{city.name}}" [queryParams]="{id: city.id}">{{city.name}}</a><button (click)="deleteCity(i)">Borrar ciudad</button>
+<div class="col-md-8 col-lg-6 col-sm-10 col-xs-12">
+    <div *ngFor="let city of selectedCities; index as i" class="list-group list-group-horizontal">
+        <a routerLink="/city/{{city.name}}" [queryParams]="{id: city.id}"
+            class="list-group-item list-group-item-action">
+            {{city.name}}
+        </a>
+        <div class="list-group-item">
+            <button type="button" class="btn btn-danger" (click)="deleteCity(i)">Borrar ciudad</button>
+        </div>
+    </div>
 </div>

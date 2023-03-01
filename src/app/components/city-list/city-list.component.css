@@ -1,0 +1,14 @@
+.list-group {
+    margin: 10px;
+}
+
+.list-group-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}

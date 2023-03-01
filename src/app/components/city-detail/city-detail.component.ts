@@ -10,19 +10,22 @@ import { Observable } from 'rxjs';
 })
 export class CityDetailComponent implements OnInit {
 
-    city: CityData | undefined;
+    weatherData: any;
 
     apiKey = '5b4a5fb7fff1a8f5a3c0cd68dc4e9a5b';
     apiUrl = `data/2.5/weather?appid=${this.apiKey}&id=`;
+
+    iconSrc: string = '';
 
     constructor(private http: HttpClient, private route: ActivatedRoute) { }
 
     ngOnInit(): void {
         this.route.queryParams.subscribe((params: any) => {
-            this.getCityData(params.id).subscribe({
+            this.getWeatherData(params.id).subscribe({
                 next: (data) => {
                     console.log(data);
-                    this.city = data;
+                    this.weatherData = data;
+                    this.iconSrc = `http://openweathermap.org/img/wn/${this.weatherData.weather[0].icon}@2x.png`;
                 },
                 error: (e) => {
                     console.log(e);
@@ -31,8 +34,8 @@ export class CityDetailComponent implements OnInit {
         });
     }
 
-    getCityData(cityId: number): Observable<any> {
-        return this.http.get(this.apiUrl + cityId);
+    getWeatherData(cityId: number): Observable<any> {
+        return this.http.get(this.apiUrl + cityId + '&units=metric&lang=es');
     }
 
 }
