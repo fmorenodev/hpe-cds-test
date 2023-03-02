@@ -1,10 +1,9 @@
 <ng-template #rt let-r="result" let-t="term">
     <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
 </ng-template>
-<label for="city-typeahead" class="typeahead-label">Busca una ciudad:</label>
+<label for="city-typeahead" class="typeahead-label">Busca una ciudad para ver sus datos</label>
 <div class="col-md-8 col-lg-6 col-sm-10 col-xs-12">
     <input id="city-typeahead" #cityTypeahead type="text" class="form-control" [ngbTypeahead]="search"
-        [inputFormatter]="formatter" [resultTemplate]="rt" (focus)="focus$.next($any($event).target.value)"
-        (click)="click$.next($any($event).target.value)" #instance="ngbTypeahead"
+        [inputFormatter]="formatter" [resultTemplate]="rt" #instance="ngbTypeahead"
         (selectItem)="addToCityList($event, cityTypeahead)" />
 </div>

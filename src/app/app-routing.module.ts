@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CityDetailComponent } from './components/city-detail/city-detail.component';
+import { CityDetailComponent } from './pages/city-detail/city-detail.component';
 import { LoginGuard } from './helpers/login.guard';
 import { LoginComponent } from './pages/login/login.component';
 import { MainComponent } from './pages/main/main.component';

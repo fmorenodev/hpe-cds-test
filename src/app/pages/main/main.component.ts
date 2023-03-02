@@ -10,25 +10,33 @@ import { LoginService } from 'src/app/services/login.service';
 export class MainComponent implements OnInit {
 
     selectedCities: CityData[] = [];
+    username: string | null = '';
 
     constructor(private cookieService: CookieService, private loginService: LoginService) { }
 
     ngOnInit(): void {
-        const storedList = this.cookieService.get(this.loginService.getActiveUsername())
-        if (storedList !== '') {
-            this.selectedCities = JSON.parse(storedList);
+        this.username = this.loginService.getActiveUsername();
+        if (this.username !== null) {
+            const storedList = this.cookieService.get(this.username);
+            if (storedList !== '') {
+                this.selectedCities = JSON.parse(storedList);
+            }
         }
     }
 
     addCity(city: CityData): void {
         const repeatedCities = this.selectedCities.filter((value) => value.id === city.id);
-        console.log(repeatedCities);
-        console.log(city)
-        console.log(this.selectedCities)
         if (repeatedCities.length === 0) {
             this.selectedCities.push(city);
-            this.cookieService.set(this.loginService.getActiveUsername(), JSON.stringify(this.selectedCities));
+            const username = this.loginService.getActiveUsername();
+            if (username !== null) {
+                this.cookieService.set(username, JSON.stringify(this.selectedCities));
+            }
         }
+    }
+
+    logout(): void {
+        this.loginService.logout();
     }
 
 }

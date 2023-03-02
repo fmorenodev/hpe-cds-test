@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
@@ -6,23 +7,29 @@ import { Injectable } from '@angular/core';
 export class LoginService {
 
     users: User[] = [{ username: 'fmoreno', password: 'randompass' }, { username: 'user2', password: 'randompass' }];
-    private activeUsername: string = '';
-    private isUserLoggedIn: boolean = false;
+
+    constructor(private router: Router) { }
 
     login(user: User): boolean {
         if (this.users.some(elem => elem.username == user.username && elem.password == user.password)) {
-            this.isUserLoggedIn = true;
-            this.activeUsername = user.username;
+            sessionStorage.setItem('loggedUser', user.username);
             return true;
         }
         return false;
     }
 
-    isLoggedIn(): boolean {
-        return this.isUserLoggedIn;
+    logout(): void {
+        if (this.isLoggedIn()) {
+            sessionStorage.clear();
+            this.router.navigate(['/login']);
+        }
     }
 
-    getActiveUsername(): string {
-        return this.activeUsername;
+    isLoggedIn(): boolean {
+        return sessionStorage.getItem('loggedUser') !== null;
+    }
+
+    getActiveUsername(): string | null {
+        return sessionStorage.getItem('loggedUser');
     }
 }

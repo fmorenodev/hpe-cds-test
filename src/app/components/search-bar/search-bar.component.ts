@@ -28,9 +28,9 @@ export class SearchBarComponent {
 
         return merge(debouncedText$, inputFocus$, clicksWithClosedPopup$).pipe(
             map((term) =>
-                (term === '' ? this.CityData: this.CityData.filter(
+                (term === '' ? this.CityData : this.CityData.filter(
                     (city: CityData) => city.name.toLowerCase().indexOf(term.toLowerCase())
-                > -1)).slice(0, 10),
+                        > -1)).slice(0, 10),
             ),
         );
     };

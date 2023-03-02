@@ -1,5 +1,4 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-city-list',
@@ -9,8 +8,6 @@ import { Router } from '@angular/router';
 export class CityListComponent implements OnChanges {
 
     @Input() selectedCities: CityData[] = [];
-
-    constructor(private router: Router) {}
 
     ngOnChanges(changes: SimpleChanges): void {
         this.selectedCities = changes['selectedCities'].currentValue;

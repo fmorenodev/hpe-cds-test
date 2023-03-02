@@ -1,4 +1,18 @@
-<div style="background-color: #9ad0f4;">
-    <app-search-bar (selectedCities)="addCity($event)"></app-search-bar>
-    <app-city-list [selectedCities]="selectedCities"></app-city-list>
-</div>
+<nav class="navbar bg-body-tertiary" style="background-color: #e3f2fd;">
+    <div class="container-fluid">
+        <span class="navbar-brand">
+            <i class="h1 bi bi-cloud-sun-fill d-inline-block" style="color: rgb(43, 107, 226);"></i>
+            ElTiempo
+        </span>
+        <div class="navbar-right">
+            <div class="nav-item">
+                <span>Estás conectado como {{username}}</span>
+            </div>
+            <div class="nav-item">
+                <button class="btn btn-primary" (click)="logout()">Cerrar sesión</button>
+            </div>
+        </div>
+    </div>
+</nav>
+<app-search-bar (selectedCities)="addCity($event)"></app-search-bar>
+<app-city-list [selectedCities]="selectedCities"></app-city-list>
