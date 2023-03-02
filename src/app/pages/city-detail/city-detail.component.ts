@@ -25,7 +25,7 @@ export class CityDetailComponent implements OnInit {
                 next: (data: WeatherData) => {
                     this.weatherData = data;
                     this.iconSrc = `http://openweathermap.org/img/wn/${this.weatherData.weather[0].icon}@2x.png`;
-                    console.log(data)
+                    console.log(data);
                 },
                 error: (e) => {
                     console.log(e);
@@ -34,6 +34,10 @@ export class CityDetailComponent implements OnInit {
         });
     }
 
+    /**
+     * Consigue los datos del tiempo de la API
+     * @param cityId 
+     */
     getWeatherData(cityId: number): Observable<any> {
         return this.http.get(this.apiUrl + cityId + '&units=metric&lang=es');
     }

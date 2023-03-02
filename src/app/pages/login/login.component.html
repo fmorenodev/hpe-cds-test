@@ -21,7 +21,7 @@
                                 <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
                                     <div class="form-outline mb-2">
                                         <input type="text" class="form-control" name="username"
-                                            placeholder="Nombre de usuario" [(ngModel)]="form.username" required
+                                            placeholder="Nombre de usuario" [(ngModel)]="userData.username" required
                                             #username="ngModel" />
                                         <div *ngIf="username.errors && f.submitted"
                                             style="color: #ad2432; font-weight: 500;" role="alert">
@@ -30,7 +30,7 @@
                                     </div>
                                     <div class="form-outline mb-2">
                                         <input type="password" class="form-control" name="password"
-                                            placeholder="Contraseña" [(ngModel)]="form.password" required
+                                            placeholder="Contraseña" [(ngModel)]="userData.password" required
                                             #password="ngModel" />
                                         <div style="color: #ad2432; font-weight: 500;" role="alert"
                                             *ngIf="password.errors && f.submitted">

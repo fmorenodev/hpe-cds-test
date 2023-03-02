@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 
@@ -9,7 +10,8 @@ import { LoginService } from '../../services/login.service';
 })
 export class LoginComponent {
 
-    form: User = {
+    @ViewChild('f', {static: true}) public form!: NgForm;
+    userData: User = {
         username: '',
         password: ''
     };
@@ -18,7 +20,7 @@ export class LoginComponent {
     constructor(private loginService: LoginService, private router: Router) { }
 
     onSubmit(): void {
-        if (this.loginService.login(this.form)) {
+        if (this.loginService.login(this.userData)) {
             this.isLoginFailed = false;
             this.router.navigate(['/main']);
         } else {

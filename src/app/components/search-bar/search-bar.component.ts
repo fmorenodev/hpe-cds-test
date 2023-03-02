@@ -12,15 +12,17 @@ export class SearchBarComponent {
 
     @Output() selectedCities = new EventEmitter<CityData>();
 
-    CityData: CityData[] = cityDataJson;
+    cityData: CityData[] = cityDataJson;
 
-    @ViewChild('instance', { static: true })
-    instance!: NgbTypeahead;
+    @ViewChild('instance', { static: true }) instance!: NgbTypeahead;
     focus$ = new Subject<string>();
     click$ = new Subject<string>();
 
     formatter = (result: CityData) => result.name;
 
+    /**
+     * Funcion auxiliar de la barra de búsqueda
+     */
     search: OperatorFunction<string, readonly CityData[]> = (text$: Observable<string>) => {
         const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
         const clicksWithClosedPopup$ = this.click$.pipe(filter(() => !this.instance.isPopupOpen()));
@@ -28,7 +30,7 @@ export class SearchBarComponent {
 
         return merge(debouncedText$, inputFocus$, clicksWithClosedPopup$).pipe(
             map((term) =>
-                (term === '' ? this.CityData : this.CityData.filter(
+                (term === '' ? this.cityData : this.cityData.filter(
                     (city: CityData) => city.name.toLowerCase().indexOf(term.toLowerCase())
                         > -1)).slice(0, 10),
             ),

@@ -14,6 +14,7 @@ export class MainComponent implements OnInit {
 
     constructor(private cookieService: CookieService, private loginService: LoginService) { }
 
+    // Adquiere la lista de ciudades si hay alguna guardada
     ngOnInit(): void {
         this.username = this.loginService.getActiveUsername();
         if (this.username !== null) {
@@ -24,6 +25,10 @@ export class MainComponent implements OnInit {
         }
     }
 
+    /**
+     * Recibe un cityData del componente search-bar y lo añade a la lista para que city-list pueda actualizarse
+     * @param city 
+     */
     addCity(city: CityData): void {
         const repeatedCities = this.selectedCities.filter((value) => value.id === city.id);
         if (repeatedCities.length === 0) {
